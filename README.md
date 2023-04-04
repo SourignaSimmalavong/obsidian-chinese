@@ -56,7 +56,7 @@ I strongly advise to bind hotkeys to `Regex Pipeline: Chinese tone.regex` and `R
 
 ## Pinyin rules
 
-Copy the content of pinyin_rules.txt into [typing transformer](https://github.com/aptend/typing-transformer-obsidian) rules (`Settings -> Community plugins -> Typing Transformer options -> Rules`).
+Copy the content of `regex-rulesets/pinyin_rules.txt` into [typing transformer](https://github.com/aptend/typing-transformer-obsidian) rules (`Settings -> Community plugins -> Typing Transformer options -> Rules`).
 
 If you need to edit the rules, you can also achieve the same by copying the output of `python typing_transformer_rules_generator.py` (you will need a python environment with beartype and numpy installed).<br />
 
