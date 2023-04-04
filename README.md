@@ -65,3 +65,6 @@ Not tested on mobile.<br />
 Tested on Windows only.<br />
 
 I work with [dvorak programmer](https://www.kaufmann.no/roland/dvorak/) keyboard layout. More common keyboards like QWERTY or AZERTY keyboard layouts might have a different diacritics typing experience.
+
+# Sponsor
+If you like this project, don't hesitate to drop a message and, why not, send me a "red panda hug" on [Buy me a coffee](https://www.buymeacoffee.com/esuna.be)!
