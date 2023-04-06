@@ -264,6 +264,20 @@ def make_arrows_rules() -> List[str]:
     ]
 
 
+def make_math_rules() -> List[str]:
+    return [
+        r"'\\exists|' -> '∃|'",
+        r"'\\nexists|' -> '∄|'",
+        r"'\\sum|' -> '∑|'",
+        r"'\\prod|' -> '∏|'",
+        r"'\\bigcap|' -> '⋂|'",
+        r"'\\bigcup|' -> '⋃|'",
+        r"'\\in|' -> '∈|'",
+        r"'\\ni|' -> '∋|'",
+        r"'\\forall|' -> '∀|'",
+    ]
+
+
 def make_rules() -> str:
     rules: str = ''
     rules += '\n# Other rules\n'
@@ -278,6 +292,8 @@ def make_rules() -> str:
     rules += '\n'.join(make_3rd_tone_rules())
     rules += '\n# Arrow rules\n'
     rules += '\n'.join(make_arrows_rules())
+    rules += '\n# Math symbols\n'
+    rules += '\n'.join(make_math_rules())
 
     return rules
 
