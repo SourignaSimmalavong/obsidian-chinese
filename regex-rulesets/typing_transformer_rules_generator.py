@@ -246,10 +246,12 @@ def make_letter_to_toneX_rules() -> List[str]:
     return rules
 
 
+@beartype
 def make_other_rules() -> List[str]:
     return [r"'qu\'|' -> 'qu\'|'"]
 
 
+@beartype
 def make_arrows_rules() -> List[str]:
     return [
         # Arrows
@@ -264,6 +266,7 @@ def make_arrows_rules() -> List[str]:
     ]
 
 
+@beartype
 def make_math_rules() -> List[str]:
     return [
         r"'\\exists|' -> '∃|'",
@@ -278,6 +281,21 @@ def make_math_rules() -> List[str]:
     ]
 
 
+@beartype
+def make_trigrams_rules() -> List[str]:
+    return [
+        r"'\|\|\||' -> '☰|'",
+        r"':::|' -> '☷|'",
+        r"'\|:\||' -> '☲|'",
+        r"'::\||' -> '☳|'",
+        r"'\|\|:|' -> '☴|'",
+        r"':\|:|' -> '☵|'",
+        r"'\|::|' -> '☶|'",
+        r"':\|\||' -> '☱|'",
+    ]
+
+
+@beartype
 def make_rules() -> str:
     rules: str = ''
     rules += '\n# Other rules\n'
@@ -294,6 +312,8 @@ def make_rules() -> str:
     rules += '\n'.join(make_arrows_rules())
     rules += '\n# Math symbols\n'
     rules += '\n'.join(make_math_rules())
+    rules += '\n# Trigrams\n'
+    rules += '\n'.join(make_trigrams_rules())
 
     return rules
 
