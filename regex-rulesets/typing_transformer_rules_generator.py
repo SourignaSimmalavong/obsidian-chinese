@@ -261,8 +261,8 @@ def make_arrows_rules() -> List[str]:
         r"'<=|' -> '⇐|'",
         r"'->|' -> '→|'",
         r"'<-|' -> '←|'",
-        r"'--^|' -> '↗|'  # '⤴|'",
-        r"'--v|' -> '↘|'  # '⤵|'"
+        r"'-^|' -> '↗|'  # '⤴|'",
+        r"'-v|' -> '↘|'  # '⤵|'"
     ]
 
 
@@ -278,8 +278,16 @@ def make_math_rules() -> List[str]:
         r"'\\in|' -> '∈|'",
         r"'\\ni|' -> '∋|'",
         r"'\\forall|' -> '∀|'",
+        r"'=/=|' -> '≠|'",
     ]
 
+@beartype
+def make_special_characters_rules() -> List[str]:
+    return [
+        r"'o->|' -> '♂|'",
+        r"'o+|' -> '♀|'",
+        r"'>o+|' -> '☿|'",
+    ]
 
 @beartype
 def make_trigrams_rules() -> List[str]:
@@ -308,6 +316,8 @@ def make_rules() -> str:
     rules += '\n'.join(make_correct_ellipsis_rules())
     rules += '\n# 3rd tone from 2nd tone or from circumflex\n'
     rules += '\n'.join(make_3rd_tone_rules())
+    rules += '\n#Special characters\n'
+    rules += '\n'.join(make_special_characters_rules())
     rules += '\n# Arrow rules\n'
     rules += '\n'.join(make_arrows_rules())
     rules += '\n# Math symbols\n'
