@@ -248,7 +248,11 @@ def make_letter_to_toneX_rules() -> List[str]:
 
 @beartype
 def make_other_rules() -> List[str]:
-    return [r"'qu\'|' -> 'qu\'|'"]
+    return [
+        r"'qu\'|' -> 'qu\'|'  # for French",
+        r"')\n|)' -> ')|'  # for smoother auto-completion with obsidian-chinese",
+        r"'\n|)' -> ')|'  # for smoother auto-completion with obsidian-chinese"
+    ]
 
 
 @beartype
@@ -262,24 +266,41 @@ def make_arrows_rules() -> List[str]:
         r"'->|' -> '→|'",
         r"'<-|' -> '←|'",
         r"'-^|' -> '↗|'  # '⤴|'",
-        r"'-v|' -> '↘|'  # '⤵|'"
+        r"'-v|' -> '↘|'  # '⤵|'",
+        r"'\|\|^|' -> '⇑|'",
+        r"'\|\|v|' -> '⇓|'",
+        r"'\|v|' -> '↓|'",
+        r"'\|^|' -> '↑|'",
+    '↚'
     ]
 
 
 @beartype
 def make_math_rules() -> List[str]:
-    return [
-        r"'\\exists|' -> '∃|'",
-        r"'\\nexists|' -> '∄|'",
-        r"'\\sum|' -> '∑|'",
-        r"'\\prod|' -> '∏|'",
-        r"'\\bigcap|' -> '⋂|'",
-        r"'\\bigcup|' -> '⋃|'",
-        r"'\\in|' -> '∈|'",
-        r"'\\ni|' -> '∋|'",
-        r"'\\forall|' -> '∀|'",
-        r"'=/=|' -> '≠|'",
-    ]
+    rules: Dict[str, str] = {
+        'exists': '∃',
+        'nexists': '∄',
+        'sum': '∑',
+        'prod': '∏',
+        'bigcap': '⋂',
+        'bigcup': '⋃',
+        'in': '∈',
+        'notin': '∉',
+        'ni': '∋',
+        'forall': '∀'
+    }
+
+    slash_rules: List[str] = []
+    for a, b in rules.items():
+        if a[0] != 'n':
+            slash_rules.append(fr"'\{a}|' -> '{b}|'")
+
+    dollar_rules: List[str] = []
+    for a, b in rules.items():
+        dollar_rules.append(fr"'${a}|' -> '{b}|'")
+
+    return slash_rules + dollar_rules + [r"'=/=|' -> '≠|'"]
+
 
 @beartype
 def make_special_characters_rules() -> List[str]:
@@ -288,6 +309,7 @@ def make_special_characters_rules() -> List[str]:
         r"'o+|' -> '♀|'",
         r"'>o+|' -> '☿|'",
     ]
+
 
 @beartype
 def make_trigrams_rules() -> List[str]:
